@@ -1,35 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import words from "./wordList.json";
+import HangmanDrawing from "./components/HangmanDrawing";
+import HangmanWord from "./components/HangmanWord";
+import Keyboard from "./components/Keyboard";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [wordToGuess, setWordToGuess] = useState(() => {
+    return words[Math.floor(Math.random() * words.length)];
+  });
+
+  const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="flex flex-col gap-8 justify-center items-center w-[800px] p-5">
+      <h1>Win or lose</h1>
+      <HangmanDrawing />
+      <HangmanWord />
+      <div className="self-stretch">
+        <Keyboard />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      {/* <h1 >{wordToGuess}</h1> */}
+    </div>
+  );
 }
 
-export default App
+export default App;
