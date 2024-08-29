@@ -11,7 +11,7 @@ function getWord() {
 
 function App() {
   const [wordToGuess, setWordToGuess] = useState(getWord());
-  console.log(wordToGuess);
+  // console.log(wordToGuess);
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
 
   const incorrectLetters = guessedLetters.filter(
@@ -21,43 +21,63 @@ function App() {
   const isWinner = wordToGuess
     .split("")
     .every((letter) => guessedLetters.includes(letter));
+
   const addGuessedLetter = useCallback(
     (letter: string) => {
-      if (guessedLetters.includes(letter) || isLoser || isWinner) return;
-
-      setGuessedLetters((currentLetters) => [...currentLetters, letter]);
+      if (letter.toLowerCase() === "enter") {
+        setGuessedLetters([]);
+        setWordToGuess(getWord());
+      } else if (!guessedLetters.includes(letter) && !isLoser && !isWinner) {
+        setGuessedLetters((currentLetters) => [...currentLetters, letter]);
+      }
     },
     [guessedLetters, isWinner, isLoser]
   );
 
+  const [keyPressed, setKeyPressed] = useState<string | null>(null);
+
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       const key = e.key;
       if (!key.match(/^[a-z]$/)) return;
-
+      // console.log(key);
       e.preventDefault();
-      addGuessedLetter(key);
-    };
-    document.addEventListener("keypress", handler);
 
-    return () => {
-      document.removeEventListener("keypress", handler);
+      addGuessedLetter(key);
+      setKeyPressed(key);
     };
-  }, [guessedLetters, addGuessedLetter]);
+
+    const handleKeyUp = () => {
+      setKeyPressed(null);
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keyup", handleKeyUp);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keyup", handleKeyUp);
+    };
+  }, [guessedLetters, addGuessedLetter, keyPressed]);
 
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       const key = e.key;
       if (key !== "Enter") return;
       e.preventDefault();
       setGuessedLetters([]);
       setWordToGuess(getWord());
+      setKeyPressed("Enter");
     };
 
-    document.addEventListener("keypress", handler);
+    const handleKeyUp = () => {
+      setKeyPressed(null);
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keyup", handleKeyUp);
 
     return () => {
-      document.removeEventListener("keypress", handler);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keyup", handleKeyUp);
     };
   }, []);
 
@@ -73,16 +93,19 @@ function App() {
         guessedLetters={guessedLetters}
         wordToGuess={wordToGuess}
       />
-      <div className="self-stretch">
-        <Keyboard
-          activeLetters={guessedLetters.filter((letter) =>
-            wordToGuess.includes(letter)
-          )}
-          inactiveLetters={incorrectLetters}
-          addGuessedLetter={addGuessedLetter}
-          disabled={isLoser || isWinner}
-        />
-      </div>
+      {/* <div className="self-stretch"> */}
+      <Keyboard
+        activeLetters={guessedLetters.filter((letter) =>
+          wordToGuess.includes(letter)
+        )}
+        inactiveLetters={incorrectLetters}
+        addGuessedLetter={addGuessedLetter}
+        disabled={isLoser || isWinner}
+        letter=""
+        isPressed={false}
+        pressedKey={keyPressed}
+      />
+      {/* </div> */}
     </div>
   );
 }
