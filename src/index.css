@@ -56,9 +56,9 @@ button:disabled{
   cursor: not-allowed;
   opacity: .3;
 }
-button:window-inactive{
+/* button:window-inactive{
   opacity: .3;
-}
+} */
 
 button:hover:not(:disabled) {
   border-color: black;
@@ -68,7 +68,10 @@ button:focus-visible:not(:disabled) {
   border-color: black;
   /* outline: none; */
 }
-
+button.active{
+  outline: auto;
+  opacity: 1;
+}
 /* 
 @media (prefers-color-scheme: light) {
   :root {
