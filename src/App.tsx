@@ -82,8 +82,8 @@ function App() {
   }, []);
 
   return (
-    <div className="flex flex-col gap-8 justify-center items-center w-[800px] p-5">
-      <h1>
+    <div className="flex flex-col gap-8 justify-center items-center p-5">
+      <h1 className="lg:text-6xl md:text-5xl sm:text-4xl text-3xl">
         {isWinner && "Winner! - Press Enter to try again"}{" "}
         {isLoser && "Nice try! - Press Enter to try again"}
       </h1>
@@ -102,7 +102,7 @@ function App() {
         addGuessedLetter={addGuessedLetter}
         disabled={isLoser || isWinner}
         letter=""
-        isPressed={false}
+        isPressed
         pressedKey={keyPressed}
       />
       {/* </div> */}

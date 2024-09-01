@@ -17,8 +17,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-
 body {
   margin: 0;
   display: flex;
@@ -34,31 +32,29 @@ h1 {
   line-height: 1.1;
 }
 
-button {
+/* button {
   border-radius: 8px;
   border: 1px solid;
   @apply border-greyBg;
-  padding: .6em 1.2em;
+  padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: bold;
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
   aspect-ratio: 1/1;
+  text-align: center;
   text-transform: uppercase;
   transition: border-color 0.25s;
-}
-
-button:active:not(:disabled){
-  @apply bg-greyBg text-black
-}
-button:disabled{
-  cursor: not-allowed;
-  opacity: .3;
-}
-/* button:window-inactive{
-  opacity: .3;
 } */
+
+button:active:not(:disabled) {
+  @apply bg-greyBg text-black;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
 
 button:hover:not(:disabled) {
   border-color: black;
@@ -68,10 +64,35 @@ button:focus-visible:not(:disabled) {
   border-color: black;
   /* outline: none; */
 }
-button.active{
+button.active {
   outline: auto;
   opacity: 1;
 }
+
+/* button.enter::before{
+  content: "";
+  width: 31%;
+  height: 50%;
+  background: #1a1a1a;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-left: 1px solid;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  @apply border-greyBg;
+  left: -29.5%;
+  top: 0;
+  transition: border-color 0.25s;
+  position: absolute;
+}
+button.enter:hover::before{
+border-color: black;
+}
+button.enter{
+  border-top-left-radius: 0;
+  padding: 0.4em;
+
+} */
 /* 
 @media (prefers-color-scheme: light) {
   :root {

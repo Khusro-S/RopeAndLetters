@@ -29,7 +29,11 @@ function renderKeyButton({
       onClick={() => addGuessedLetter(letter)}
       className={`${isActive ? "active" : ""} ${isInactive ? "inactive" : ""} ${
         isPressed ? "bg-greyBg text-black" : ""
-      }`}
+      } ${
+        letter === "Enter"
+          ? "max-sm:w-[45px] flex justify-center items-center"
+          : ""
+      } rounded-lg border border-solid border-greyBg lg:py-[0.6rem] lg:px-[1.2rem] md:py-[0.5rem] md:px-[1rem] sm:py-[0.4rem] sm:px-[0.9rem] py-[0.2rem] px-[0.7rem] lg:text-lg md:text-base sm:text-sm text-[0.5rem] font-bold bg-[#1a1a1a] cursor-pointer sm:aspect-square text-center uppercase transition-colors duration-200`}
       disabled={isActive || isInactive || disabled}
     >
       {letter}
@@ -45,8 +49,8 @@ export default function Keyboard({
   pressedKey,
 }: KeyboardProps) {
   return (
-    <div className="flex flex-col items-center justify-center w-full gap-2 relative">
-      <div className="flex gap-2">
+    <div className="flex flex-col items-center justify-center max-sm:gap-1 gap-2 relative">
+      <div className="flex gap-2 max-sm:gap-1">
         {KEYS_ROW_FIRST.map((letter) =>
           renderKeyButton({
             letter,
@@ -60,7 +64,7 @@ export default function Keyboard({
         )}
       </div>
 
-      <div className="flex gap-2">
+      <div className="flex gap-2 max-sm:gap-1">
         {KEYS_ROW_SECOND.map((letter) =>
           renderKeyButton({
             letter,
@@ -74,7 +78,7 @@ export default function Keyboard({
         )}
       </div>
 
-      <div className="flex gap-2">
+      <div className="flex gap-2 max-sm:gap-1">
         {KEYS_ROW_THIRD.map((letter) =>
           renderKeyButton({
             letter,
@@ -88,7 +92,7 @@ export default function Keyboard({
         )}
       </div>
 
-      <div className="absolute -right-4 top-1/2 -translate-y-1/2">
+      <div className="absolute sm:-right-[18%] md:-right-[20%] max-sm:top-[3.7rem] max-sm:right-[0.08rem] top-1/2  -translate-y-1/2">
         {renderKeyButton({
           letter: "Enter",
           activeLetters,
