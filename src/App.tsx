@@ -4,6 +4,7 @@ import words from "./wordList.json";
 import HangmanDrawing from "./components/HangmanDrawing";
 import HangmanWord from "./components/HangmanWord";
 import Keyboard from "./components/Keyboard";
+import Modal from "./components/Modal";
 
 function getWord() {
   return words[Math.floor(Math.random() * words.length)];
@@ -58,6 +59,13 @@ function App() {
     };
   }, [guessedLetters, addGuessedLetter, keyPressed]);
 
+  const [isPopUp, setIsPopUp] = useState<boolean>(false);
+  const togglePopUp = useCallback(() => {
+    setIsPopUp(false);
+    setGuessedLetters([]);
+    setWordToGuess(getWord());
+  }, []);
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       const key = e.key;
@@ -65,6 +73,7 @@ function App() {
       e.preventDefault();
       setGuessedLetters([]);
       setWordToGuess(getWord());
+      togglePopUp();
       setKeyPressed("Enter");
     };
 
@@ -79,14 +88,28 @@ function App() {
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("keyup", handleKeyUp);
     };
-  }, []);
+  }, [togglePopUp]);
+
+  useEffect(() => {
+    if (isLoser || isWinner) {
+      setIsPopUp(true);
+    }
+  }, [isLoser, isWinner]);
 
   return (
-    <div className="flex flex-col gap-8 justify-center items-center p-5">
-      <h1 className="lg:text-6xl md:text-5xl sm:text-4xl text-3xl">
+    <div className="flex flex-col gap-8 justify-center items-center p-5 ">
+      {/* <h1 className="lg:text-6xl md:text-5xl sm:text-4xl text-3xl">
         {isWinner && "Winner! - Press Enter to try again"}{" "}
         {isLoser && "Nice try! - Press Enter to try again"}
-      </h1>
+      </h1> */}
+      <Modal
+        isLoser={isLoser}
+        isWinner={isWinner}
+        isPopUpVisible={isPopUp}
+        togglePopUp={togglePopUp}
+        guessedLetters={guessedLetters}
+        wordToGuess={wordToGuess}
+      />
       <HangmanDrawing numberOfGuesses={incorrectLetters.length} />
       <HangmanWord
         reveal={isLoser}
