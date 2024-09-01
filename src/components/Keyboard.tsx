@@ -31,9 +31,9 @@ function renderKeyButton({
         isPressed ? "bg-greyBg text-black" : ""
       } ${
         letter === "Enter"
-          ? "max-md:w-[4rem] max-sm:w-[3rem] absolute md:-right-[20%] max-md:top-[6.4rem] max-md:-right-[0rem] max-sm:top-[3.7rem] max-sm:-right-[0.1rem] top-1/2  -translate-y-1/2"
+          ? "max-md:w-[4rem] max-sm:w-[3rem] absolute md:-right-[18%] max-md:top-[6.4rem] max-md:-right-[0rem] max-sm:top-[4rem] max-sm:-right-[0.1rem] top-1/2  -translate-y-1/2"
           : ""
-      } rounded-lg border border-solid border-greyBg lg:py-[0.6rem] lg:px-[1.2rem] md:py-[0.5rem] md:px-[1rem] sm:py-[0.4rem] sm:px-[0.9rem] py-[0.2rem] px-[0.7rem] lg:text-lg md:text-base sm:text-sm text-[0.5rem] font-bold bg-[#1a1a1a] cursor-pointer md:aspect-square text-center uppercase transition-colors duration-200 flex justify-center items-center`}
+      } rounded-lg border border-solid border-greyBg lg:py-[0.6rem] lg:px-[1.2rem] md:py-[0.5rem] md:px-[1rem] sm:py-[0.4rem] sm:px-[0.9rem] py-[0.2rem] px-[0.7rem] lg:text-lg md:text-base sm:text-sm text-[0.6rem] font-bold bg-[#1a1a1a] cursor-pointer md:aspect-square text-center uppercase transition-colors duration-200 flex justify-center items-center`}
       disabled={isActive || isInactive || disabled}
     >
       {letter}
