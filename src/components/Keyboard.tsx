@@ -7,25 +7,6 @@ const KEYS_ROW_FIRST = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
 const KEYS_ROW_SECOND = ["a", "s", "d", "f", "g", "h", "j", "k", "l"];
 const KEYS_ROW_THIRD = ["z", "x", "c", "v", "b", "n", "m"];
 
-// type KeyboardProps = {
-//   activeLetters: string[];
-//   inactiveLetters: string[];
-//   addGuessedLetter: (letter: string) => void;
-//   disabled?: boolean;
-//   letter: string;
-//   isPressed: boolean;
-//   keyPressed: string | null;
-// };
-
-// function renderKeyButton({
-//   letter,
-//   activeLetters,
-//   inactiveLetters,
-//   addGuessedLetter,
-//   disabled,
-//   isPressed,
-// }: KeyboardProps) {
-
 type KeyboardProps = {
   letter: string;
   isPressed: boolean;
@@ -59,14 +40,6 @@ function RenderKeyButton({ letter, isPressed }: KeyboardProps) {
   );
 }
 
-// export default function Keyboard({
-//   activeLetters,
-//   inactiveLetters,
-//   addGuessedLetter,
-//   disabled = false,
-//   pressedKey,
-// }: KeyboardProps) {
-
 export default function Keyboard() {
   const { keyPressed } = useContextData();
 
@@ -76,12 +49,7 @@ export default function Keyboard() {
         {KEYS_ROW_FIRST.map((letter) =>
           RenderKeyButton({
             letter,
-            // activeLetters,
-            // inactiveLetters,
-            // addGuessedLetter,
-            // disabled,
             isPressed: keyPressed === letter,
-            // keyPressed ,
           })
         )}
       </div>
@@ -90,12 +58,7 @@ export default function Keyboard() {
         {KEYS_ROW_SECOND.map((letter) =>
           RenderKeyButton({
             letter,
-            // activeLetters,
-            // inactiveLetters,
-            // addGuessedLetter,
-            // disabled,
             isPressed: keyPressed === letter,
-            // keyPressed,
           })
         )}
       </div>
@@ -104,27 +67,15 @@ export default function Keyboard() {
         {KEYS_ROW_THIRD.map((letter) =>
           RenderKeyButton({
             letter,
-            // activeLetters,
-            // inactiveLetters,
-            // addGuessedLetter,
-            // disabled,
             isPressed: keyPressed === letter,
-            // keyPressed,
           })
         )}
       </div>
 
-      {/* <div className="absolute md:-right-[20%] max-md:-bottom[20rem] max-md:-right-[0.8rem] max-sm:top-[3.7rem] max-sm:right-[0.08rem] top-1/2  -translate-y-1/2"> */}
       {RenderKeyButton({
         letter: "Enter",
-        // activeLetters,
-        // inactiveLetters,
-        // addGuessedLetter,
-        // disabled: false,
         isPressed: keyPressed === "Enter",
-        // keyPressed,
       })}
-      {/* </div> */}
     </div>
   );
 }

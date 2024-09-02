@@ -23,14 +23,6 @@ const LEG_LEFT = (
 
 const BODY_PARTS = [HEAD, BODY, ARM_RIGHT, ARM_LEFT, LEG_RIGHT, LEG_LEFT];
 
-// type HangmanDrawingProps = {
-//   numberOfGuesses: number;
-// };
-
-// export default function HangmanDrawing({
-//   numberOfGuesses,
-// }: HangmanDrawingProps) {
-
 export default function HangmanDrawing() {
   const { numberOfGuesses } = useContextData();
   return (
