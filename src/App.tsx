@@ -11,7 +11,7 @@ function App() {
     <>
       <Header />
       <ContextProvider>
-        <div className="flex flex-col gap-8 justify-center items-center px-5">
+        <div className="flex flex-col gap-8 justify-center items-center max-h-screen">
           <Modal />
           <HangmanDrawing />
           <HangmanWord />
