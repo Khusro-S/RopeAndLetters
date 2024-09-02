@@ -26,7 +26,7 @@ const BODY_PARTS = [HEAD, BODY, ARM_RIGHT, ARM_LEFT, LEG_RIGHT, LEG_LEFT];
 export default function HangmanDrawing() {
   const { numberOfGuesses } = useContextData();
   return (
-    <div className="relative">
+    <div className="relative lg:mt-3">
       {BODY_PARTS.slice(0, numberOfGuesses)}
       <div className="absolute w-[5px] h-[40px] max-sm:w-[3px] max-sm:h-[27px] max-md:w-[4px] max-md:h-[34px] bg-greyBg top-0 right-0" />
       <div className="h-[5px] w-[150px] max-sm:w-[100px] max-sm:h-[3px] max-md:w-[125px] max-md:h-[4px] bg-greyBg ml-[82.5px] max-sm:ml-[53.5px] max-md:ml-[66.5px]" />
