@@ -19,6 +19,7 @@ type ContextDataTypeProps = {
   disabled: boolean;
   numberOfGuesses: number;
   reveal: boolean;
+  isPopUp: boolean;
 };
 
 type UpdateContextDataTypeProps = {
@@ -140,6 +141,7 @@ export default function ContextProvider({ children }: { children: ReactNode }) {
     disabled,
     numberOfGuesses,
     reveal,
+    isPopUp,
   };
 
   const updateContextValue: UpdateContextDataTypeProps = {
