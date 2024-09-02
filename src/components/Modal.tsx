@@ -1,23 +1,32 @@
 // import gameover from "../assets/gamover.png";
+import {
+  useContextData,
+  useUpdateContextData,
+} from "../context/ContextProvider";
 import HangmanWord from "./HangmanWord";
 
-type ModalProps = {
-  isWinner: boolean;
-  isLoser: boolean;
-  isPopUpVisible: boolean;
-  togglePopUp: () => void;
-  wordToGuess: string;
-  guessedLetters: string[];
-};
-export default function Modal({
-  isWinner = false,
-  isLoser = false,
-  isPopUpVisible,
-  togglePopUp,
-  wordToGuess,
-  guessedLetters,
-}: ModalProps) {
-  console.log(wordToGuess);
+// type ModalProps = {
+//   isWinner: boolean;
+//   isLoser: boolean;
+//   isPopUpVisible: boolean;
+//   togglePopUp: () => void;
+//   wordToGuess: string;
+//   guessedLetters: string[];
+// };
+// export default function Modal({
+//   isWinner = false,
+//   isLoser = false,
+//   isPopUpVisible,
+//   togglePopUp,
+//   wordToGuess,
+//   guessedLetters,
+// }: ModalProps) {
+
+export default function Modal() {
+  const { isWinner, isLoser } = useContextData();
+  const { togglePopUp } = useUpdateContextData();
+
+  const isPopUpVisible = isWinner || isLoser;
   return (
     <div
       className={`${
@@ -30,11 +39,7 @@ export default function Modal({
         <div className="bg-green-400 p-10 rounded-lg flex flex-col lg:gap-8 md:gap-6 sm:gap-4 gap-2 relative">
           <h2>CONGRATS YOU WON</h2>
           <h2>The word was:</h2>
-          <HangmanWord
-            reveal={isLoser}
-            guessedLetters={guessedLetters}
-            wordToGuess={wordToGuess}
-          />
+          <HangmanWord />
           <button
             onClick={togglePopUp}
             className="font-bold px-3 py-2 text-green-400 bg-greyBg rounded-lg w-2/3 hover:ring ring-green-500 lg:text-4xl md:text-3xl sm:text-xl text-lg transition-all duration-200"
@@ -57,11 +62,7 @@ export default function Modal({
           {/* <div className="flex flex-col gap-5"> */}
           <h2>Sorry, You LOST</h2>
           <h2>The word was: </h2>
-          <HangmanWord
-            reveal={isLoser}
-            guessedLetters={guessedLetters}
-            wordToGuess={wordToGuess}
-          />
+          <HangmanWord />
           <button
             onClick={togglePopUp}
             className="font-bold px-3 py-2 text-red-500 bg-greyBg rounded-lg w-2/3 hover:ring ring-red-500 lg:text-4xl md:text-3xl sm:text-xl text-lg"

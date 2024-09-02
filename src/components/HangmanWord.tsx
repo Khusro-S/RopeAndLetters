@@ -1,14 +1,19 @@
-type HangmanWordProps = {
-  guessedLetters: string[];
-  wordToGuess: string;
-  reveal?: boolean;
-};
+// type HangmanWordProps = {
+//   guessedLetters: string[];
+//   wordToGuess: string;
+//   reveal?: boolean;
+// };
 
-export default function HangmanWord({
-  guessedLetters,
-  wordToGuess,
-  reveal = false,
-}: HangmanWordProps) {
+import { useContextData } from "../context/ContextProvider";
+
+// export default function HangmanWord({
+//   guessedLetters,
+//   wordToGuess,
+//   reveal = false,
+// }: HangmanWordProps) {
+
+export default function HangmanWord() {
+  const { guessedLetters, wordToGuess, reveal } = useContextData();
   return (
     <div className="flex gap-1 lg:text-6xl md:text-5xl sm:text-4xl text-3xl font-bold uppercase font-mono">
       {wordToGuess.split("").map((letter: string, index: number) => (

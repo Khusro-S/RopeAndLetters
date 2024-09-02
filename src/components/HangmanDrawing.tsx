@@ -1,3 +1,5 @@
+import { useContextData } from "../context/ContextProvider";
+
 const HEAD = (
   <div className="rounded-full w-[60px] h-[60px] max-sm:w-[40px] max-sm:h-[40px] max-md:w-[50px] max-md:h-[50px] border-[5px] max-sm:border-[3px] max-md:border-[4px] border-greyBg absolute top-[38px] right-[-28px] max-sm:top-[27px] max-sm:right-[-19px] max-md:top-[30px] max-md:right-[-23px]" />
 );
@@ -21,13 +23,16 @@ const LEG_LEFT = (
 
 const BODY_PARTS = [HEAD, BODY, ARM_RIGHT, ARM_LEFT, LEG_RIGHT, LEG_LEFT];
 
-type HangmanDrawingProps = {
-  numberOfGuesses: number;
-};
+// type HangmanDrawingProps = {
+//   numberOfGuesses: number;
+// };
 
-export default function HangmanDrawing({
-  numberOfGuesses,
-}: HangmanDrawingProps) {
+// export default function HangmanDrawing({
+//   numberOfGuesses,
+// }: HangmanDrawingProps) {
+
+export default function HangmanDrawing() {
+  const { numberOfGuesses } = useContextData();
   return (
     <div className="relative">
       {BODY_PARTS.slice(0, numberOfGuesses)}
