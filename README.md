@@ -46,7 +46,7 @@ A classic Hangman word game built with React, Vite, Tailwind CSS, and canvas-con
 
 ## 🎥 Demo/Preview
 
-https://github.com/user-attachments/assets/050f5b11-7fd5-4c7a-bf75-33c3128b9604
+![RopeAndLetters](https://github.com/user-attachments/assets/c4b823ca-ee96-47a8-855f-9d99175c4013)
 
 ---
 ## 🚦 Running the Project Locally
