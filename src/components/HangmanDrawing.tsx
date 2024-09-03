@@ -21,7 +21,14 @@ const LEG_LEFT = (
   <div className="w-[5px] h-[60px] max-sm:w-[3px] max-sm:h-[40px max-md:w-[4px] max-md:h-[50px] bg-greyBg rotate-[-135deg] absolute right-[20px] top-[188px] max-sm:top-[125px] max-sm:right-[14px] max-md:top-[154.5px] max-md:right-[17.5px]" />
 );
 
-const BODY_PARTS = [HEAD, BODY, ARM_RIGHT, ARM_LEFT, LEG_RIGHT, LEG_LEFT];
+export const BODY_PARTS = [
+  HEAD,
+  BODY,
+  ARM_RIGHT,
+  ARM_LEFT,
+  LEG_RIGHT,
+  LEG_LEFT,
+];
 
 export default function HangmanDrawing() {
   const { numberOfGuesses } = useContextData();

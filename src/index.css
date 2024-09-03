@@ -67,7 +67,7 @@ button:focus-visible:not(:disabled) {
   /* outline: none; */
 }
 button.active {
-  outline: auto;
+  @apply ring-green-400 ring-2;
   opacity: 1;
 }
 
