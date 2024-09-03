@@ -1,50 +1,59 @@
-# React + TypeScript + Vite
+# Rope & Letters (Replica of the Classic Hangman Word Game)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A classic Hangman word game built with React, Vite, Tailwind CSS, and canvas-confetti. This game is responsive and features a custom loading screen for a fun user experience. It showcases the use of Context API, React hooks (useCallback, useMemo), and TypeScript.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- `Classic Hangman Gameplay`: Guess the hidden word by suggesting letters.
+- `Responsive Design`: The game adapts to various screen sizes.
+- `Loading Screen`: A mimicked loading screen.
+- `Confetti Animation`: Celebratory confetti effect using canvas-confetti.
+- `Keyboard Input`: Players can guess letters using both the on-screen keyboard and their physical keyboard.
+----
+## 📝 How It Works
 
-## Expanding the ESLint configuration
+1. `Loading Screen`:
+   - A mimicked loading screen is shown the first time a user visits the game, providing a brief, interactive experience before the game starts.
+2. `Game Initialization`:
+   - When the game starts, a random word is selected from a predefined list and displayed as underscores representing each letter.
+3. `User Interaction`:
+   - Players guess letters by clicking on the onscreen keyboard or pressing physical keys.
+   - Each guessed letter is checked against the hidden word. Correct guesses reveal letters in the word, while incorrect guesses increase the hangman’s "gallows."
+4. `State Management`:
+   - The game state, including the current word, guessed letters, and number of attempts remaining, is managed using React Context API for global state management.
+5. `React Hooks`:
+   - useCallback is used to memoize functions that handle user interactions, preventing unnecessary re-renders.
+   - useMemo is used to optimize performance.
+6. `Winning and Losing`:
+   - The game tracks the number of incorrect guesses and displays a win or loss message when appropriate.
+   - Confetti animation is triggered on a win using canvas-confetti.
+7. `Responsive Design`:
+   - Tailwind CSS is used to ensure the game is responsive and looks good on various devices.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
+## ⚡ Technologies
 
-- Configure the top-level `parserOptions` property like this:
+- `Vite`
+- `React.js`
+- `TailwindCSS`
+-  `Typescript`
+-  `canvas-confetti`
+---
+## 🎥 Live Demo
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+<a href="https://ropeandletters.netlify.app" target="_blank"> Rope & Letters </a>
+---
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 🎥 Demo/Preview
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+https://github.com/user-attachments/assets/050f5b11-7fd5-4c7a-bf75-33c3128b9604
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+---
+## 🚦 Running the Project Locally
+
+To run the project in your local environment, follow these steps:
+
+1. Clone the repository to your local machine.
+2. Navigate to the project directory and run `npm install` or `yarn` to install the required dependencies.
+5. Start the project with `npm run dev` or `yarn dev`.
+6. Open http://localhost:5173 (or the address displayed in your console) in your web browser to view the application.
